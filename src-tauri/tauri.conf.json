@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Mars Editor",
+  "productName": "Yuezheng Editor",
   "version": "0.1.2",
   "identifier": "com.mars-editor.app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "火星编辑器",
+        "title": "月政公众编辑器",
         "width": 1440,
         "height": 900,
         "minWidth": 900,
@@ -64,7 +64,7 @@
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://github.com/whyubel1eve/Mars-Editor-APP/releases/latest/download/latest.json"
+        "https://github.com/yuezheng2006/Mars-Editor-APP/releases/latest/download/latest.json"
       ],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEQ2NUQzNkY2MzQ1MzU4MTUKUldRVldGTTA5alpkMXZLRXhUOU1mTGpWWWlzK1VXMlJFYkZoZjVyN2x2RSsvQkdSeGhZVVl1aG4K",
       "windows": {

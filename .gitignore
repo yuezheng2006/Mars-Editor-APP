@@ -36,3 +36,7 @@ scripts/
 
 # Agent tooling
 .claude/
+
+# Local deployment artifacts
+artifacts/
+site-dist/

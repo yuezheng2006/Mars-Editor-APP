@@ -27,7 +27,7 @@ import { check, type Update } from '@tauri-apps/plugin-updater';
 import { getConfig, setConfig } from './appConfig';
 
 /** Where to send someone whose install cannot update itself (see `install`) */
-export const RELEASES_URL = 'https://github.com/whyubel1eve/Mars-Editor-APP/releases/latest';
+export const RELEASES_URL = 'https://github.com/yuezheng2006/Mars-Editor-APP/releases/latest';
 
 /** Version the user pressed 忽略 on — it stops lighting the toolbar pill */
 const SKIP_KEY = 'update.skipped';
