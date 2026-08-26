@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Yuezheng Editor",
+  "productName": "Vins Editor",
   "version": "0.1.2",
   "identifier": "com.mars-editor.app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "月政公众编辑器",
+        "title": "Vins Editor",
         "width": 1440,
         "height": 900,
         "minWidth": 900,
