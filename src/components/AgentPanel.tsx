@@ -751,7 +751,11 @@ export default function AgentPanel({ open, vaultDir, activeId, onClose, onBefore
       {missing && !historyOpen && (
         <div className="agent-missing">
           <p>
-            没找到 <code>{kind}</code>。终端里跑一下 <code>which {kind}</code>，把路径填这儿：
+            AI 使用你本机已经登录的 <code>{kind}</code>，Vins Editor 不需要再填 API Key。
+            请先按官方文档安装并登录，再回到这里；如果已安装但没被找到，运行 <code>which {kind}</code>，把路径填这儿：
+          </p>
+          <p className="agent-missing-help">
+            任选一个即可：Claude Code 适合日常写作，Codex 也可以直接处理当前草稿。点击顶部 Agent 后，选择模型，使用下方快捷动作或输入请求，按 Enter 发送。
           </p>
           <div className="agent-bin-row">
             <input
