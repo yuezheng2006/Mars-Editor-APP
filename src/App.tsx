@@ -574,7 +574,7 @@ function Workspace({ vault }: { vault: VaultApi }) {
       // A long image goes through <foreignObject>, which only sees resources it
       // carries itself, so remote images must be inlined first
       const { html: inlined } = await inlineRemoteImages(body);
-      const blob = await renderLongImage({ body: inlined, theme, author: '火星' });
+      const blob = await renderLongImage({ body: inlined, theme, author: 'VinsEditor' });
       if (await saveBlob(`${safeFileName(activeDraft?.name ?? '长图')}.png`, blob)) flash('长图已导出');
     } catch (err) {
       console.warn('长图导出失败', err);

@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowCounterClockwise, CheckCircle, GearSix, PaperPlaneTilt, Stack, X } from '@phosphor-icons/react';
 import { prepareImage } from '../images';
 import { publishToDraft, type DraftTarget } from '../publish';
-import { isConfigured } from '../wechat';
+import { isConfigured, testConnection } from '../wechat';
 import { patchWechatConfig, useWechatConfig } from '../store/wechatConfig';
 
 interface Props {
@@ -103,6 +103,20 @@ export default function PublishDialog({
     }
   };
 
+  /** Catch common mistakes before spending a WeChat request or uploading an asset. */
+  const validateArticle = (html: string): string[] => {
+    const errors: string[] = [];
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const text = (doc.body.textContent ?? '').replace(/\s+/g, '').trim();
+    const hasImage = doc.querySelector('img') !== null;
+    if (!title.trim()) errors.push('标题不能为空');
+    if (title.trim().length > 32) errors.push(`标题 ${title.trim().length} 字，超过微信 32 字上限`);
+    if (!text && !hasImage) errors.push('正文不能为空');
+    if (!cover && !target?.thumbMediaId && !hasImage) errors.push('缺少封面：请选择一张封面图');
+    if (cfg.author.trim().length > 16) errors.push('作者超过微信 16 字上限');
+    return errors;
+  };
+
   const handlePublish = async () => {
     if (!configured) {
       setProbe({ kind: 'fail', message: '还没填公众号凭据 —— 去「设置」里填 AppID 与 AppSecret' });
@@ -111,7 +125,17 @@ export default function PublishDialog({
     setBusy(true);
     setProbe(null);
     try {
+      // Render before the network probe so invalid drafts fail locally and the
+      // checklist describes the exact HTML that is about to be sent.
       const html = await buildHtml();
+      const localErrors = validateArticle(html);
+      if (localErrors.length) {
+        setProbe({ kind: 'fail', message: `发布前检查未通过：\n${localErrors.map((e) => `• ${e}`).join('\n')}` });
+        return;
+      }
+      setProgress('正在检查微信连接…');
+      const check = await testConnection(cfg);
+      if (!check.canPublish) throw new Error(check.message);
       const { mediaId, updated, uploaded, smallestEdge, roundTrip } = await publishToDraft(cfg, {
         title,
         html,
@@ -303,6 +327,18 @@ export default function PublishDialog({
               />
               <span>打开留言</span>
             </label>
+          </section>
+
+          <section className="publish-checklist" aria-label="发布前检查">
+            <div className="form-section-label">发布前检查</div>
+            <p className="form-note">点击发布时会先在本机检查内容，再连接微信；发现问题会直接告诉你怎么改。</p>
+            <div className="checklist-items">
+              <span>✓ 标题 ≤ 32 字</span>
+              <span>✓ 正文 / 图片不为空</span>
+              <span>✓ 封面可用</span>
+              <span>✓ 作者 ≤ 16 字</span>
+              <span>✓ 微信连接与草稿权限</span>
+            </div>
           </section>
         </div>
 

@@ -1,6 +1,6 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
-  "productName": "Mars Editor",
+  "productName": "VinsEditor",
   "version": "0.1.2",
   "identifier": "com.mars-editor.app",
   "build": {
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "火星编辑器",
+        "title": "VinsEditor",
         "width": 1440,
         "height": 900,
         "minWidth": 900,
@@ -30,7 +30,7 @@
   },
   "bundle": {
     "active": true,
-    "longDescription": "Markdown 写作，一键转成公众号内联样式富文本 —— 粘进公众号编辑器即可无损还原，也可以直接推送到草稿箱。草稿不藏在应用里，就是磁盘上的普通 .md 文件。",
+    "longDescription": "VinsEditor：Markdown 写作，一键转成公众号内联样式富文本 —— 粘进公众号编辑器即可无损还原，也可以直接推送到草稿箱。草稿不藏在应用里，就是磁盘上的普通 .md 文件。",
     "createUpdaterArtifacts": true,
     "targets": [
       "app",

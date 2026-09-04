@@ -94,6 +94,27 @@ const DRAW_DELAY = 60;
 
 const FOLLOW_SLACK = 96;
 
+/** Common writing actions turn the editor's context into a usable prompt.
+ * They intentionally fill the composer instead of sending immediately: the
+ * user can adjust the request and still has the final say over an edit. */
+const QUICK_ACTIONS = [
+  {
+    label: '润色全文',
+    prompt:
+      '请直接在当前打开的 Markdown 草稿上做中文润色：保留原意、结构和事实，只改善表达、断句与可读性。完成后说明改了什么。',
+  },
+  {
+    label: '写标题摘要',
+    prompt:
+      '请阅读当前打开的 Markdown 草稿，给出 5 个适合微信公众号的标题和 3 个摘要候选。不要改文件，直接在回复中列出结果。',
+  },
+  {
+    label: '检查发布',
+    prompt:
+      '请检查当前打开的 Markdown 草稿是否适合发布到微信公众号：关注标题、层级、链接、图片、字数和可能导致排版异常的内容。按“问题 / 建议”列出，不要直接改文件。',
+  },
+] as const;
+
 /** The timestamp in the session list, in plain words */
 function whenText(ts: number): string {
   const d = new Date(ts);
@@ -628,6 +649,12 @@ export default function AgentPanel({ open, vaultDir, activeId, onClose, onBefore
     })();
   };
 
+  const useQuickAction = (prompt: string) => {
+    if (running || missing || probing) return;
+    setInput(prompt);
+    window.setTimeout(() => inputRef.current?.focus(), 0);
+  };
+
   const stop = () => {
     const id = runIdRef.current;
     if (id) void stopAgent(id).catch(() => undefined);
@@ -724,7 +751,11 @@ export default function AgentPanel({ open, vaultDir, activeId, onClose, onBefore
       {missing && !historyOpen && (
         <div className="agent-missing">
           <p>
-            没找到 <code>{kind}</code>。终端里跑一下 <code>which {kind}</code>，把路径填这儿：
+            AI 使用你本机已经登录的 <code>{kind}</code>，Vins Editor 不需要再填 API Key。
+            请先按官方文档安装并登录，再回到这里；如果已安装但没被找到，运行 <code>which {kind}</code>，把路径填这儿：
+          </p>
+          <p className="agent-missing-help">
+            任选一个即可：Claude Code 适合日常写作，Codex 也可以直接处理当前草稿。点击顶部 Agent 后，选择模型，使用下方快捷动作或输入请求，按 Enter 发送。
           </p>
           <div className="agent-bin-row">
             <input
@@ -810,6 +841,19 @@ export default function AgentPanel({ open, vaultDir, activeId, onClose, onBefore
               <span>{activeId}</span>
             </div>
           )}
+          <div className="agent-quick-actions" aria-label="常用 AI 操作">
+            {QUICK_ACTIONS.map((action) => (
+              <button
+                key={action.label}
+                type="button"
+                className="agent-quick-action"
+                onClick={() => useQuickAction(action.prompt)}
+                disabled={missing || probing || running}
+              >
+                {action.label}
+              </button>
+            ))}
+          </div>
           <textarea
             ref={inputRef}
             value={input}

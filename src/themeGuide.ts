@@ -23,7 +23,7 @@ const EXAMPLE = JSON.stringify(
   2,
 );
 
-export const THEME_GUIDE = `# 火星编辑器 · 主题文件格式
+export const THEME_GUIDE = `# VinsEditor · 主题文件格式
 
 这个目录里每一个 \`.json\` 文件就是一个自定义主题，文件名必须等于主题的 \`id\`
 （比如 \`celadon.json\` 里的 id 就是 \`celadon\`）。编辑器在监听这个目录：文件一存，

@@ -1,7 +1,7 @@
 [package]
 name = "mars-editor"
 version = "0.1.2"
-description = "火星编辑器 —— Markdown 写作，一键转成公众号内联样式富文本"
+description = "VinsEditor —— Markdown 写作，一键转成公众号内联样式富文本"
 authors = ["bryc3"]
 license = "MIT"
 repository = "https://github.com/whyubel1eve/Mars-Editor-APP"

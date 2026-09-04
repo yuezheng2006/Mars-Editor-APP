@@ -123,11 +123,110 @@
   margin-bottom: 10px;
 }
 
+.publish-checklist {
+  margin: 12px 0 4px;
+  padding: 12px 13px 11px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  background: var(--sunken);
+}
+
+.publish-checklist .form-section-label {
+  margin-bottom: 6px;
+}
+
+.publish-checklist .form-note {
+  margin-bottom: 8px;
+}
+
+.checklist-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  color: var(--text-2);
+  font-size: 10.5px;
+  line-height: 1.6;
+}
+
+.checklist-items span {
+  white-space: nowrap;
+}
+
 .form-note {
   font-size: 11.5px;
   line-height: 1.75;
   color: var(--text-2);
   margin: 0 0 10px;
+}
+
+.about-copy {
+  font-size: 12px;
+  line-height: 1.75;
+  color: var(--text-2);
+  margin-bottom: 14px;
+}
+
+.about-copy strong {
+  color: var(--text-1);
+}
+
+.about-subtitle {
+  margin: 13px 0 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-1);
+}
+
+.markdown-cheatsheet {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.markdown-cheatsheet code {
+  padding: 4px 7px;
+  border-radius: var(--r-xs);
+  background: var(--sunken);
+  color: var(--accent-hi);
+  font-size: 10.5px;
+}
+
+.about-list {
+  margin: 0;
+  padding-left: 17px;
+  color: var(--text-2);
+  font-size: 11.5px;
+  line-height: 1.75;
+}
+
+.donation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.donation-card {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-md);
+  color: var(--text-3);
+  background: var(--surface-3);
+}
+
+.donation-card span {
+  color: var(--text-2);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.donation-card small {
+  font-size: 10px;
+  color: var(--text-3);
 }
 
 .field {

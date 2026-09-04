@@ -44,7 +44,7 @@ export async function fetchImageAsDataUrl(src: string): Promise<string | null> {
     // Send the image's own site as the Referer: most hotlink protection looks
     // at that header and nothing else
     const res = await fetch(src, {
-      headers: { Referer: new URL(src).origin, 'User-Agent': 'Mozilla/5.0 (compatible; MarsEditor/1.0)' },
+      headers: { Referer: new URL(src).origin, 'User-Agent': 'Mozilla/5.0 (compatible; VinsEditor/1.0)' },
     });
     if (!res.ok) {
       console.warn('外链图抓取失败', src, `HTTP ${res.status}`);

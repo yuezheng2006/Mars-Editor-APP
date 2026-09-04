@@ -11,12 +11,10 @@ import {
   Folder,
   FolderOpen,
   FolderPlus,
-  GithubLogo,
   Globe,
   Image as ImageIcon,
   PencilSimple,
   Trash,
-  XLogo,
 } from "@phosphor-icons/react";
 import type { Draft, Entry } from "../store/vault";
 import { isImagePath, isTextPath, parentOf } from "../store/vault";
@@ -555,28 +553,6 @@ export default function FileTree({
             清理 {unusedImages.length} 张未引用图片
           </button>
         )}
-      </div>
-
-      {/* Foot of the rail. Plain anchors on purpose: the app-wide external
-          link listener catches them and hands the address to the system
-          browser, the same path every other outside link takes. */}
-      <div className="tree-foot">
-        <a
-          className="ghost-btn"
-          href="https://x.com/yanxi067"
-          title="作者的 X"
-          aria-label="作者的 X"
-        >
-          <XLogo size={14} weight="fill" />
-        </a>
-        <a
-          className="ghost-btn"
-          href="https://github.com/whyubel1eve"
-          title="作者的 GitHub"
-          aria-label="作者的 GitHub"
-        >
-          <GithubLogo size={14} weight="fill" />
-        </a>
       </div>
 
       {/* Rendered on <body>: the panel is a frosted `.surface`, and its
