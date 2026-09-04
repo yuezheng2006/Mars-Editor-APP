@@ -46,7 +46,7 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               tag_name: tag,
-              name: `火星编辑器 ${tag}`,
+              name: `VinsEditor ${tag}`,
               body: process.env.NOTES || '',
               draft: true,
               prerelease: false,
@@ -66,6 +66,10 @@ jobs:
             args: --bundles deb,rpm,appimage
           - platform: windows-latest
             args: --bundles nsis
+          - platform: macos-13
+            args: --bundles dmg
+          - platform: macos-14
+            args: --bundles dmg
 
     runs-on: ${{ matrix.platform }}
     steps:

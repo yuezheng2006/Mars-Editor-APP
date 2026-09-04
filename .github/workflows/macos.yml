@@ -1,0 +1,42 @@
+name: macOS 安装包
+
+# 手动触发（Actions → macOS 安装包 → Run workflow），用于快速验证和下载 DMG。
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-13
+            artifact: vinseditor-macos-intel
+          - runner: macos-14
+            artifact: vinseditor-macos-apple-silicon
+    runs-on: ${{ matrix.runner }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: src-tauri
+          key: ${{ matrix.runner }}
+
+      - run: npm ci
+
+      - name: 打包 DMG
+        run: npm run app:build -- --bundles dmg
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: src-tauri/target/release/bundle/dmg/*.dmg
+          if-no-files-found: error
