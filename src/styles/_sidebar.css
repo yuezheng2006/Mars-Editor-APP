@@ -336,18 +336,6 @@
   color: var(--accent-hi);
 }
 
-/* Foot of the rail: where the author is reachable. It sits below the scroll
-   area rather than inside it, so it stays put no matter how long the file list
-   grows — and a hairline keeps it from reading as one more tree row. */
-.tree-foot {
-  flex: none;
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 5px 8px;
-  border-top: 1px solid var(--line-hair);
-}
-
 /* Context menu: positioned at the cursor, styled by the shared popover rules */
 .tree-menu {
   position: fixed;
