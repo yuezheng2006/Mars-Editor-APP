@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowCounterClockwise, CheckCircle, GearSix, PaperPlaneTilt, Stack, X } from '@phosphor-icons/react';
 import { prepareImage } from '../images';
 import { publishToDraft, type DraftTarget } from '../publish';
-import { isConfigured } from '../wechat';
+import { isConfigured, testConnection } from '../wechat';
 import { patchWechatConfig, useWechatConfig } from '../store/wechatConfig';
 
 interface Props {
@@ -111,6 +111,9 @@ export default function PublishDialog({
     setBusy(true);
     setProbe(null);
     try {
+      setProgress('正在检查微信连接…');
+      const check = await testConnection(cfg);
+      if (!check.canPublish) throw new Error(check.message);
       const html = await buildHtml();
       const { mediaId, updated, uploaded, smallestEdge, roundTrip } = await publishToDraft(cfg, {
         title,
