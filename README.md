@@ -1,11 +1,11 @@
-# 火星编辑器 · Mars Editor
+# VinsEditor
 
 Markdown 写作，一键转成公众号排版 —— 粘进公众号编辑器即可无损还原，也可以直接推送到公众号
 草稿箱。你在预览里看到的，就是读者手机上的样子。
 
 macOS / Windows / Linux 桌面应用。
 
-![火星编辑器：左边文件树，中间 Markdown 编辑区，右边公众号预览与 Agent 面板](example.webp)
+![VinsEditor：左边文件树，中间 Markdown 编辑区，右边公众号预览与 Agent 面板](example.webp)
 
 ## 工作区就是一个普通文件夹
 

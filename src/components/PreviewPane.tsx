@@ -290,7 +290,7 @@ export default function PreviewPane({ body, theme, hasImage, densityName, resize
               <div className="article-head">
                 <h1 className="head-title">{title || '未命名文章'}</h1>
                 <div className="meta">
-                  <span className="author">火星</span>
+                  <span className="author">VinsEditor</span>
                   <span className="byline">
                     {today.getFullYear()} 年 {today.getMonth() + 1} 月 {today.getDate()} 日
                   </span>

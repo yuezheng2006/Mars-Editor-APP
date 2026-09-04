@@ -256,7 +256,7 @@ export default function SettingsDialog({ open, onClose, onOpenUpdate }: Props) {
           <section className="form-section">
             <div className="form-section-label">关于</div>
             <div className="update-line">
-              <span className="app-version">火星编辑器 {version ? `v${version}` : ''}</span>
+              <span className="app-version">VinsEditor {version ? `v${version}` : ''}</span>
               <button
                 className="btn"
                 onClick={() => void checkForUpdate()}

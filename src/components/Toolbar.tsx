@@ -125,7 +125,7 @@ export default function Toolbar({
             <path d="M15.9 16.2 22.8 24" />
           </svg>
         </span>
-        <span className="brand-name">火星编辑器</span>
+        <span className="brand-name">VinsEditor</span>
       </div>
 
       {docName && (
