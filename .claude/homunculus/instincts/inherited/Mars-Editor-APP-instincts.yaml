@@ -1,0 +1,146 @@
+# Instincts generated from https://github.com/yuezheng2006/Mars-Editor-APP
+# Generated: 2026-09-04T01:51:39.066Z
+# Version: 2.0
+# NOTE: This file supplements (does not replace) any existing curated instincts.
+# High-confidence manually curated instincts should be preserved alongside these.
+
+---
+id: Mars-Editor-APP-commit-ticket-ref
+trigger: "when writing a commit message"
+confidence: 0.75
+domain: git
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Commit Ticket Ref
+
+## Action
+
+Include ticket reference matching pattern: ^([A-Z]+-\d+)
+
+## Evidence
+
+- Ticket pattern detected in commits
+- Pattern: ^([A-Z]+-\d+)
+
+---
+id: Mars-Editor-APP-commit-length
+trigger: "when writing a commit message"
+confidence: 0.6
+domain: git
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Commit Length
+
+## Action
+
+Keep commit messages concise (~49 characters)
+
+## Evidence
+
+- Average commit message length: 49 chars
+- Based on 1 commits
+
+---
+id: Mars-Editor-APP-naming-files
+trigger: "when creating a new file"
+confidence: 0.8
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Naming Files
+
+## Action
+
+Use PascalCase naming convention
+
+## Evidence
+
+- Analyzed file naming patterns in repository
+- Dominant pattern: PascalCase
+
+---
+id: Mars-Editor-APP-import-relative
+trigger: "when importing modules"
+confidence: 0.75
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Import Relative
+
+## Action
+
+Use relative imports for project files
+
+## Evidence
+
+- Import analysis shows relative import pattern
+- Example: import { x } from '../lib/x'
+
+---
+id: Mars-Editor-APP-export-style
+trigger: "when exporting from a module"
+confidence: 0.7
+domain: code-style
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Export Style
+
+## Action
+
+Prefer default exports
+
+## Evidence
+
+- Export pattern analysis
+- Dominant style: default
+
+---
+id: Mars-Editor-APP-arch-type-based
+trigger: "when adding new code"
+confidence: 0.8
+domain: architecture
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Arch Type Based
+
+## Action
+
+Place code in the appropriate type folder (components/, services/, utils/, etc.)
+
+## Evidence
+
+- Type-based module organization detected
+- Folders: components, styles
+
+---
+id: Mars-Editor-APP-test-separate
+trigger: "when writing tests"
+confidence: 0.8
+domain: testing
+source: repo-analysis
+source_repo: https://github.com/yuezheng2006/Mars-Editor-APP
+---
+
+# Mars Editor APP Test Separate
+
+## Action
+
+Place tests in the tests/ or __tests__/ directory, mirroring src structure
+
+## Evidence
+
+- Separate test directory pattern detected
+- Tests live in dedicated test folders
+
