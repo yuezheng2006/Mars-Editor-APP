@@ -113,17 +113,10 @@ export default function Toolbar({
   return (
     <header className="toolbar" data-tauri-drag-region="deep">
       <div className="brand">
-        {/* Seal-style wordmark: flat, no glowing badge. The 火 is drawn as
-            stroked paths rather than <text> so it matches the app icon exactly
-            and does not depend on which CJK serif the system happens to have. */}
-        <span className="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="3.4"
-               strokeLinecap="round" strokeLinejoin="round">
-            <path d="M9.4 9.2 8.1 12.6" />
-            <path d="M22.6 9.2 23.9 12.6" />
-            <path d="M17.4 7.4c0 5.9-2.3 11.2-6.9 16.6" />
-            <path d="M15.9 16.2 22.8 24" />
-          </svg>
+        {/* The toolbar uses the same friendly page mascot as the app icon and
+            favicon, so the brand stays consistent inside and outside the app. */}
+        <span className="brand-mark">
+          <img src="./favicon.svg" alt="" aria-hidden="true" />
         </span>
         <span className="brand-name">VinsEditor</span>
       </div>

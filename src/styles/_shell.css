@@ -33,8 +33,7 @@
   flex: none;
 }
 
-/* Seal-style wordmark: flat fill, no glow, no gradient — a stamp pressed
-   onto the page */
+/* The shared Q-style page mascot used by the app icon and favicon. */
 .brand-mark {
   width: 22px;
   height: 22px;
@@ -42,14 +41,13 @@
   display: grid;
   place-items: center;
   flex: none;
-  color: var(--on-accent);
-  background: var(--accent);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28), var(--shadow-1);
+  overflow: hidden;
+  background: var(--surface-2);
+  box-shadow: var(--shadow-1);
 }
 
-/* The glyph carries its own padding inside the 32-unit viewBox, so it fills
-   the chip edge to edge. */
-.brand-mark svg {
+/* Keep the full mascot visible in the compact lockup. */
+.brand-mark img {
   width: 100%;
   height: 100%;
   display: block;
